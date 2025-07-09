@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "gign"
-version = "1.0.1"
+version = "1.0.2"
 description = "A magical CLI tool that automatically generates and manages .gitignore files"
 readme = "README.md"
 license = {text = "MIT"}

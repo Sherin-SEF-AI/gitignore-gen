@@ -44,7 +44,7 @@ console = Console()
 def print_banner() -> None:
     """Print the application banner."""
     banner = """
-[bold blue]✨ gitignore-gen[/bold blue] - [italic]Magical .gitignore generation[/italic]
+[bold blue]✨ gign[/bold blue] - [italic]Magical .gitignore generation[/italic]
 [dim]Automatically detect and generate perfect .gitignore files for your project[/dim]
     """
     console.print(Panel(banner, border_style="blue"))
@@ -175,7 +175,7 @@ def version() -> None:
     """Show version information."""
     from . import __version__
     
-    console.print(f"[bold blue]gitignore-gen[/bold blue] version [green]{__version__}[/green]")
+    console.print(f"[bold blue]gign[/bold blue] version [green]{__version__}[/green]")
 
 
 @cli.command()
