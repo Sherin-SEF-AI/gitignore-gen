@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Demo script showing how to use gitignore-gen programmatically."""
+"""Demo script showing how to use gign programmatically."""
 
 import asyncio
 from pathlib import Path
@@ -9,8 +9,8 @@ from gitignore_gen.detector import TechnologyDetector
 
 
 async def main():
-    """Demonstrate gitignore-gen functionality."""
-    print("🚀 gitignore-gen Demo")
+    """Demonstrate gign functionality."""
+    print("🚀 gign Demo")
     print("=" * 50)
     
     # Create a sample project structure

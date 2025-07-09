@@ -1,5 +1,5 @@
 #!/bin/bash
-# Installation script for gitignore-gen
+# Installation script for gign
 
 set -e
 
@@ -61,19 +61,19 @@ check_pip() {
     print_success "Found pip"
 }
 
-# Install gitignore-gen
-install_gitignore_gen() {
-    print_status "Installing gitignore-gen..."
+# Install gign
+install_gign() {
+    print_status "Installing gign..."
     
     # Upgrade pip first
     print_status "Upgrading pip..."
     $PYTHON_CMD -m pip install --upgrade pip
     
-    # Install gitignore-gen
-    print_status "Installing gitignore-gen from current directory..."
+    # Install gign
+    print_status "Installing gign from current directory..."
     $PYTHON_CMD -m pip install -e .
     
-    print_success "gitignore-gen installed successfully!"
+    print_success "gign installed successfully!"
 }
 
 # Install shell completion
@@ -90,8 +90,8 @@ install_completion() {
         return
     fi
     
-    if [ -f "scripts/gitignore-gen-completion.bash" ]; then
-        sudo cp scripts/gitignore-gen-completion.bash "$COMPLETION_DIR/"
+    if [ -f "scripts/gign-completion.bash" ]; then
+        sudo cp scripts/gign-completion.bash "$COMPLETION_DIR/"
         print_success "Shell completion installed to $COMPLETION_DIR"
     else
         print_warning "Completion script not found. Skipping completion installation."
@@ -102,28 +102,28 @@ install_completion() {
 test_installation() {
     print_status "Testing installation..."
     
-    if command -v gitignore-gen &> /dev/null; then
-        print_success "gitignore-gen is available in PATH"
+    if command -v gign &> /dev/null; then
+        print_success "gign is available in PATH"
         
         # Test basic functionality
         print_status "Testing basic functionality..."
-        gitignore-gen --version
+        gign --version
         print_success "Installation test passed!"
     else
-        print_error "gitignore-gen is not available in PATH"
+        print_error "gign is not available in PATH"
         exit 1
     fi
 }
 
 # Main installation process
 main() {
-    echo "🚀 gitignore-gen Installation Script"
+    echo "🚀 gign Installation Script"
     echo "=================================="
     echo ""
     
     check_python
     check_pip
-    install_gitignore_gen
+    install_gign
     
     # Ask user if they want to install shell completion
     read -p "Do you want to install shell completion? (y/N): " -n 1 -r
@@ -138,12 +138,12 @@ main() {
     echo "🎉 Installation completed successfully!"
     echo ""
     echo "Usage examples:"
-    echo "  gitignore-gen                    # Generate .gitignore for current directory"
-    echo "  gitignore-gen --interactive      # Interactive mode"
-    echo "  gitignore-gen --help             # Show help"
-    echo "  gitignore-gen scan               # Scan directory for technologies"
+    echo "  gign                    # Generate .gitignore for current directory"
+    echo "  gign --interactive      # Interactive mode"
+    echo "  gign --help             # Show help"
+    echo "  gign scan               # Scan directory for technologies"
     echo ""
-    echo "For more information, visit: https://github.com/your-username/gitignore-gen"
+    echo "For more information, visit: https://github.com/Sherin-SEF-AI/gitignore-gen"
 }
 
 # Run main function

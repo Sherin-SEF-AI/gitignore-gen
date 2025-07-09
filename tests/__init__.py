@@ -1,1 +1,1 @@
-"""Tests for gitignore-gen.""" 
+"""Tests for gign.""" 

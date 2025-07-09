@@ -12,7 +12,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Initial release of gitignore-gen
+- Initial release of gign (formerly gitignore-gen)
+- Package renamed from gitignore-gen to gign for PyPI publication
 - Smart technology detection for 50+ frameworks and tools
 - API integration with gitignore.io
 - Interactive mode with template selection

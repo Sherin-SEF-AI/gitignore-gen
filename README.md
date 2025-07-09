@@ -1,10 +1,11 @@
-# ✨ gitignore-gen
+# ✨ gign
 
 A magical CLI tool that automatically generates and manages `.gitignore` files for your projects. Simply run it in any directory and watch as it intelligently detects your project's technologies and creates the perfect `.gitignore` file.
 
 **Author:** Sherin Joseph Roy  
 **Email:** sherin.joseph2217@gmail.com  
-**Repository:** https://github.com/Sherin-SEF-AI/gitignore-gen
+**Repository:** https://github.com/Sherin-SEF-AI/gitignore-gen  
+**PyPI:** https://pypi.org/project/gign/
 
 ## 🚀 Features
 
@@ -27,7 +28,7 @@ A magical CLI tool that automatically generates and manages `.gitignore` files f
 ### From PyPI (Recommended)
 
 ```bash
-pip install gitignore-gen
+pip install gign
 ```
 
 ### From Source
@@ -50,11 +51,11 @@ pip install -e ".[dev]"
 
 ### Basic Usage
 
-Simply run `gitignore-gen` in your project directory:
+Simply run `gign` in your project directory:
 
 ```bash
 cd your-project
-gitignore-gen
+gign
 ```
 
 The tool will:
@@ -68,7 +69,7 @@ The tool will:
 For more control, use interactive mode:
 
 ```bash
-gitignore-gen --interactive
+gign --interactive
 ```
 
 This will let you:
@@ -80,24 +81,24 @@ This will let you:
 
 ### Main Commands
 
-#### `gitignore-gen` - Main Generation
+#### `gign` - Main Generation
 Generate a `.gitignore` file for the current directory.
 
 ```bash
 # Basic generation
-gitignore-gen
+gign
 
 # With options
-gitignore-gen --security --backup --dry-run
+gign --security --backup --dry-run
 
 # Interactive mode
-gitignore-gen --interactive
+gign --interactive
 
 # Minimal mode for cleaner output
-gitignore-gen --minimal
+gign --minimal
 
 # Strict mode for precise patterns
-gitignore-gen --strict
+gign --strict
 ```
 
 **Options:**
@@ -117,173 +118,173 @@ gitignore-gen --strict
 - `--minimal`: Generate minimal .gitignore with only essential patterns
 - `--strict`: Use strict pattern matching for better accuracy
 
-#### `gitignore-gen scan` - Technology Detection
+#### `gign scan` - Technology Detection
 Scan directory and detect technologies in use.
 
 ```bash
 # Scan current directory
-gitignore-gen scan
+gign scan
 
 # Scan specific path
-gitignore-gen scan --path /path/to/project
+gign scan --path /path/to/project
 ```
 
-#### `gitignore-gen version` - Version Information
+#### `gign version` - Version Information
 Show version information.
 
 ```bash
-gitignore-gen version
+gign version
 ```
 
 ### Template Management
 
-#### `gitignore-gen list-templates` - List Templates
+#### `gign list-templates` - List Templates
 List available templates (built-in and custom).
 
 ```bash
 # List all templates
-gitignore-gen list-templates
+gign list-templates
 
 # Search for specific templates
-gitignore-gen list-templates --template python
+gign list-templates --template python
 
 # Show only custom templates
-gitignore-gen list-templates --custom-only
+gign list-templates --custom-only
 ```
 
-#### `gitignore-gen templates` - Show Template Content
+#### `gign templates` - Show Template Content
 Show content of a specific template.
 
 ```bash
 # Show Python template
-gitignore-gen templates --template python
+gign templates --template python
 
 # Save template to file
-gitignore-gen templates --template node --output node.gitignore
+gign templates --template node --output node.gitignore
 ```
 
-#### `gitignore-gen create-template` - Create Custom Template
+#### `gign create-template` - Create Custom Template
 Create a custom template.
 
 ```bash
 # Create from content
-gitignore-gen create-template --template myproject --content "*.log\n*.tmp"
+gign create-template --template myproject --content "*.log\n*.tmp"
 
 # Create from file
-gitignore-gen create-template --template myproject --file template.txt
+gign create-template --template myproject --file template.txt
 ```
 
-#### `gitignore-gen update-template` - Update Template
+#### `gign update-template` - Update Template
 Update an existing custom template.
 
 ```bash
 # Update with new content
-gitignore-gen update-template --template myproject --content "*.log\n*.tmp\n*.cache"
+gign update-template --template myproject --content "*.log\n*.tmp\n*.cache"
 
 # Update from file
-gitignore-gen update-template --template myproject --file new-template.txt
+gign update-template --template myproject --file new-template.txt
 ```
 
-#### `gitignore-gen delete-template` - Delete Template
+#### `gign delete-template` - Delete Template
 Delete a custom template.
 
 ```bash
 # Delete with confirmation
-gitignore-gen delete-template --template myproject
+gign delete-template --template myproject
 
 # Force delete without confirmation
-gitignore-gen delete-template --template myproject --force
+gign delete-template --template myproject --force
 ```
 
-#### `gitignore-gen search-templates` - Search Templates
+#### `gign search-templates` - Search Templates
 Search for templates by name or content.
 
 ```bash
 # Search by name
-gitignore-gen search-templates --query python
+gign search-templates --query python
 
 # Search only custom templates
-gitignore-gen search-templates --query myproject --custom-only
+gign search-templates --query myproject --custom-only
 ```
 
 ### Project Analysis
 
-#### `gitignore-gen analyze` - Project Analysis
+#### `gign analyze` - Project Analysis
 Analyze project structure and generate detailed report.
 
 ```bash
 # Analyze current directory
-gitignore-gen analyze
+gign analyze
 
 # Analyze specific path
-gitignore-gen analyze --path /path/to/project
+gign analyze --path /path/to/project
 
 # Save report to file
-gitignore-gen analyze --output analysis_report.json
+gign analyze --output analysis_report.json
 ```
 
-#### `gitignore-gen scan-dependencies` - Dependency Scanning
+#### `gign scan-dependencies` - Dependency Scanning
 Scan project dependencies and generate detailed report.
 
 ```bash
 # Scan current directory
-gitignore-gen scan-dependencies
+gign scan-dependencies
 
 # Save as JSON
-gitignore-gen scan-dependencies --output deps.json
+gign scan-dependencies --output deps.json
 
 # Save as YAML
-gitignore-gen scan-dependencies --output deps.yaml --format yaml
+gign scan-dependencies --output deps.yaml --format yaml
 
 # Save as CSV
-gitignore-gen scan-dependencies --output deps.csv --format csv
+gign scan-dependencies --output deps.csv --format csv
 ```
 
-#### `gitignore-gen performance-insights` - Performance Analysis
+#### `gign performance-insights` - Performance Analysis
 Generate performance insights and optimization recommendations.
 
 ```bash
 # Analyze current directory
-gitignore-gen performance-insights
+gign performance-insights
 
 # Custom threshold (default: 10MB)
-gitignore-gen performance-insights --threshold 50
+gign performance-insights --threshold 50
 
 # Save report
-gitignore-gen performance-insights --output perf_report.json
+gign performance-insights --output perf_report.json
 ```
 
-#### `gitignore-gen security-scan` - Security Analysis
+#### `gign security-scan` - Security Analysis
 Perform comprehensive security scan and generate report.
 
 ```bash
 # Full security scan
-gitignore-gen security-scan
+gign security-scan
 
 # Specific severity level
-gitignore-gen security-scan --severity high
+gign security-scan --severity high
 
 # Save report
-gitignore-gen security-scan --output security_report.json
+gign security-scan --output security_report.json
 ```
 
 ### Advanced Features
 
-#### `gitignore-gen monorepo-setup` - Monorepo Configuration
+#### `gign monorepo-setup` - Monorepo Configuration
 Set up comprehensive .gitignore structure for monorepos.
 
 ```bash
 # Basic setup
-gitignore-gen monorepo-setup
+gign monorepo-setup
 
 # With shared patterns
-gitignore-gen monorepo-setup --shared
+gign monorepo-setup --shared
 
 # Generate per-service files
-gitignore-gen monorepo-setup --per-service
+gign monorepo-setup --per-service
 
 # Specific strategy
-gitignore-gen monorepo-setup --strategy nested
+gign monorepo-setup --strategy nested
 ```
 
 **Strategies:**
@@ -291,78 +292,78 @@ gitignore-gen monorepo-setup --strategy nested
 - `nested`: Nested directory structure
 - `hybrid`: Mixed approach (default)
 
-#### `gitignore-gen optimize` - .gitignore Optimization
+#### `gign optimize` - .gitignore Optimization
 Optimize existing .gitignore file for better performance.
 
 ```bash
 # Preview optimizations
-gitignore-gen optimize --dry-run
+gign optimize --dry-run
 
 # Apply optimizations
-gitignore-gen optimize
+gign optimize
 
 # Aggressive optimization
-gitignore-gen optimize --aggressive
+gign optimize --aggressive
 ```
 
-#### `gitignore-gen auto-fix` - Auto-fix Tracked Files
+#### `gign auto-fix` - Auto-fix Tracked Files
 Automatically remove files that should be ignored from git.
 
 ```bash
 # Preview what would be fixed
-gitignore-gen auto-fix --dry-run
+gign auto-fix --dry-run
 
 # Apply fixes
-gitignore-gen auto-fix
+gign auto-fix
 ```
 
-#### `gitignore-gen clean` - Clean Ignored Files
+#### `gign clean` - Clean Ignored Files
 Clean up files that should be ignored from git.
 
 ```bash
 # Preview cleanup
-gitignore-gen clean --dry-run
+gign clean --dry-run
 
 # Apply cleanup
-gitignore-gen clean
+gign clean
 ```
 
-#### `gitignore-gen watch` - File Watching
+#### `gign watch` - File Watching
 Watch for file changes and auto-update .gitignore.
 
 ```bash
 # Watch current directory
-gitignore-gen watch
+gign watch
 
 # Custom interval (default: 5 seconds)
-gitignore-gen watch --interval 10
+gign watch --interval 10
 
 # Watch specific path
-gitignore-gen watch --path /path/to/project
+gign watch --path /path/to/project
 ```
 
 ### Configuration Management
 
-#### `gitignore-gen export-config` - Export Configuration
+#### `gign export-config` - Export Configuration
 Export .gitignore and detected technologies to a config file.
 
 ```bash
 # Export to default location
-gitignore-gen export-config
+gign export-config
 
 # Export to specific file
-gitignore-gen export-config --output my-config.json
+gign export-config --output my-config.json
 ```
 
-#### `gitignore-gen import-config` - Import Configuration
+#### `gign import-config` - Import Configuration
 Import a .gitignore-gen config and regenerate .gitignore.
 
 ```bash
 # Import from file
-gitignore-gen import-config --config my-config.json
+gign import-config --config my-config.json
 
 # Import to specific location
-gitignore-gen import-config --config my-config.json --output .gitignore
+gign import-config --config my-config.json --output .gitignore
 ```
 
 ## 🎨 Supported Technologies
@@ -427,7 +428,7 @@ gitignore-gen import-config --config my-config.json --output .gitignore
 
 ## 🔧 Configuration
 
-Create a configuration file at `~/.gitignore-gen.toml`:
+Create a configuration file at `~/.gign.toml`:
 
 ```toml
 [api]
@@ -456,7 +457,7 @@ ignore_dirs = [".git", "node_modules", "venv"]
 ### Python Project
 
 ```bash
-$ gitignore-gen
+$ gign
 🔍 Scanning project...
 🚀 Generating .gitignore...
 💾 Saving .gitignore...
@@ -471,7 +472,7 @@ Detected technologies:
 ### React + Node.js Project
 
 ```bash
-$ gitignore-gen --interactive
+$ gign --interactive
 🔍 Scanning project...
 🎯 Template Selection:
 Include python template? [y/N]: n
@@ -480,7 +481,7 @@ Include react template? [y/N]: y
 Include vscode template? [y/N]: y
 
 📋 Generated .gitignore Preview:
-# Generated by gitignore-gen
+# Generated by gign
 # Technologies detected: node, react, vscode
 
 node_modules/
@@ -498,7 +499,7 @@ Apply this .gitignore? [y/N]: y
 ### Monorepo with Security
 
 ```bash
-$ gitignore-gen --monorepo --security --backup
+$ gign --monorepo --security --backup
 🔍 Scanning project...
 🚀 Generating .gitignore...
 💾 Saving .gitignore...
@@ -512,7 +513,7 @@ $ gitignore-gen --monorepo --security --backup
 ### Advanced Analysis
 
 ```bash
-$ gitignore-gen analyze --output report.json
+$ gign analyze --output report.json
 🔍 Analyzing project: /path/to/project
 
 📊 Project Analysis Results
@@ -559,10 +560,10 @@ $ gitignore-gen analyze --output report.json
 
 ```bash
 # Create a custom template
-$ gitignore-gen create-template --template myproject --content "*.log\n*.tmp\n.env.local"
+$ gign create-template --template myproject --content "*.log\n*.tmp\n.env.local"
 
 # List templates (custom template will show with ✓)
-$ gitignore-gen list-templates
+$ gign list-templates
 📚 Available Templates:
 Custom (1): myproject
 Built-in (32): python, node, java, go, rust, php, ruby, csharp, swift, kotlin, scala, dart, flutter, react, vue, angular, svelte, docker, kubernetes, terraform, ansible, jenkins, github, gitlab, vscode, intellij, eclipse, vim, emacs, macos, windows, linux
@@ -572,7 +573,7 @@ Built-in (32): python, node, java, go, rust, php, ruby, csharp, swift, kotlin, s
   ...
 
 # Search for templates
-$ gitignore-gen search-templates --query myproject
+$ gign search-templates --query myproject
 🔍 Search Results for "myproject":
   ✓ myproject (custom template)
 ```
@@ -580,7 +581,7 @@ $ gitignore-gen search-templates --query myproject
 ### Performance Optimization
 
 ```bash
-$ gitignore-gen optimize --dry-run
+$ gign optimize --dry-run
 ⚡ Optimizing .gitignore in: /path/to/project
 Original .gitignore: 150 lines
 
@@ -601,7 +602,7 @@ Dry run mode - no changes applied
 ### Security Scanning
 
 ```bash
-$ gitignore-gen security-scan --severity high
+$ gign security-scan --severity high
 🔒 Performing security scan in: /path/to/project
 Severity level: high
 
@@ -639,10 +640,10 @@ If no technologies are detected, try:
 
 ```bash
 # Use interactive mode to manually select templates
-gitignore-gen --interactive
+gign --interactive
 
 # Or specify a template directly
-gitignore-gen templates --template python
+gign templates --template python
 ```
 
 ### API Connection Issues
@@ -658,7 +659,7 @@ Ensure you have read permissions for the directory you're scanning:
 ls -la
 
 # Run with appropriate permissions
-sudo gitignore-gen  # if needed
+sudo gign  # if needed
 ```
 
 ### Template Fetch Errors
@@ -670,7 +671,7 @@ If templates fail to fetch, the tool will use built-in fallbacks:
 ping www.tgitignore.io
 
 # Use offline mode (built-in templates)
-gitignore-gen --offline
+gign --offline
 ```
 
 ## 🤝 Contributing

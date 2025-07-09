@@ -1,5 +1,5 @@
 #!/bin/bash
-# Bash completion script for gitignore-gen
+# Bash completion script for gign
 
 _gitignore_gen_completion() {
     local cur prev opts cmds
@@ -20,7 +20,7 @@ _gitignore_gen_completion() {
     scan_opts="--path"
     
     case "${prev}" in
-        gitignore-gen)
+        gign)
             if [[ ${cur} == * ]] ; then
                 COMPREPLY=( $(compgen -W "${cmds} ${opts}" -- "${cur}") )
             fi
@@ -56,4 +56,4 @@ _gitignore_gen_completion() {
     esac
 }
 
-complete -F _gitignore_gen_completion gitignore-gen 
+complete -F _gitignore_gen_completion gign 
