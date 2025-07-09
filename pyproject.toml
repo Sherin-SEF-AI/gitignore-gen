@@ -1,0 +1,123 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gign"
+version = "1.0.0"
+description = "A magical CLI tool that automatically generates and manages .gitignore files"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "sherin joseph roy", email = "sherin.joseph2217@gmail.com"}
+]
+maintainers = [
+    {name = "sherin joseph roy", email = "sherin.joseph2217@gmail.com"}
+]
+keywords = ["git", "gitignore", "cli", "developer-tools", "automation"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Software Development :: Version Control :: Git",
+]
+requires-python = ">=3.8"
+dependencies = [
+    "click>=8.1.0",
+    "rich>=13.0.0",
+    "colorama>=0.4.6",
+    "requests>=2.31.0",
+    "gitpython>=3.1.0",
+    "pyyaml>=6.0",
+    "toml>=0.10.2",
+    "aiohttp>=3.8.0",
+    "aiofiles>=23.0.0",
+    "pathspec>=0.11.0",
+    "typing-extensions>=4.5.0",
+    "watchdog>=3.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.21.0",
+    "pytest-cov>=4.0.0",
+    "pytest-mock>=3.10.0",
+    "black>=23.0.0",
+    "isort>=5.12.0",
+    "flake8>=6.0.0",
+    "mypy>=1.0.0",
+    "pre-commit>=3.0.0",
+    "twine>=4.0.0",
+    "build>=0.10.0",
+]
+watch = ["watchdog>=3.0.0"]
+
+[project.scripts]
+gign = "gitignore_gen.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/Sherin-SEF-AI/gitignore-gen"
+Documentation = "https://github.com/Sherin-SEF-AI/gitignore-gen#readme"
+Repository = "https://github.com/Sherin-SEF-AI/gitignore-gen"
+"Bug Tracker" = "https://github.com/Sherin-SEF-AI/gitignore-gen/issues"
+Changelog = "https://github.com/Sherin-SEF-AI/gitignore-gen/blob/main/CHANGELOG.md"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["gitignore_gen*"]
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+line_length = 88
+known_first_party = ["gitignore_gen"]
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+strict_equality = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "--strict-markers",
+    "--strict-config",
+    "--cov=gitignore_gen",
+    "--cov-report=term-missing",
+    "--cov-report=html",
+    "--cov-report=xml",
+]
+asyncio_mode = "auto"
+
+[tool.coverage.run]
+source = ["gitignore_gen"]
+omit = [
+    "*/tests/*",
+    "*/test_*",
+    "*/__pycache__/*",
+    "*/venv/*",
+    "*/env/*",
+    "*/.venv/*",
+] 

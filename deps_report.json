@@ -1,0 +1,13 @@
+{
+  "scan_path": "/home/vision2030/Desktop/gitignore-gen",
+  "scan_date": 28654.618770984,
+  "dependencies": {
+    "python": {
+      "file": "pyproject.toml",
+      "path": "/home/vision2030/Desktop/gitignore-gen/pyproject.toml",
+      "size": 3265,
+      "modified": 1752065829.6609905
+    }
+  },
+  "total_technologies": 1
+}

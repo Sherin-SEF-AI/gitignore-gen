@@ -1,0 +1,26 @@
+{
+  "scan_path": "/home/vision2030/Desktop/gitignore-gen",
+  "scan_date": 28678.839525633,
+  "severity_level": "all",
+  "sensitive_files": [
+    "/home/vision2030/Desktop/gitignore-gen/demo-project/.env",
+    "/home/vision2030/Desktop/gitignore-gen/demo-project/test-git-repo/.env",
+    "/home/vision2030/Desktop/gitignore-gen/venv/lib/python3.12/site-packages/certifi/cacert.pem",
+    "/home/vision2030/Desktop/gitignore-gen/venv/lib/python3.12/site-packages/pip/_vendor/certifi/cacert.pem",
+    "/home/vision2030/Desktop/gitignore-gen/venv/lib/python3.12/site-packages/markdown_it/token.py",
+    "/home/vision2030/Desktop/gitignore-gen/venv/lib/python3.12/site-packages/pygments/token.py",
+    "/home/vision2030/Desktop/gitignore-gen/venv/lib/python3.12/site-packages/yaml/tokens.py",
+    "/home/vision2030/Desktop/gitignore-gen/venv/lib/python3.12/site-packages/markdown_it/__pycache__/token.cpython-312.pyc",
+    "/home/vision2030/Desktop/gitignore-gen/venv/lib/python3.12/site-packages/pygments/__pycache__/token.cpython-312.pyc",
+    "/home/vision2030/Desktop/gitignore-gen/venv/lib/python3.12/site-packages/pip/_vendor/pygments/token.py",
+    "/home/vision2030/Desktop/gitignore-gen/venv/lib/python3.12/site-packages/pip/_vendor/pygments/__pycache__/token.cpython-312.pyc",
+    "/home/vision2030/Desktop/gitignore-gen/venv/lib/python3.12/site-packages/yaml/__pycache__/tokens.cpython-312.pyc"
+  ],
+  "exposed_secrets": [],
+  "weak_patterns": [],
+  "recommendations": [
+    "Consider using .npmrc for npm configuration",
+    "Ensure .env files are in .gitignore"
+  ],
+  "risk_score": 120
+}

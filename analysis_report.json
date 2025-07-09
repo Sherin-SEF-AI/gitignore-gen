@@ -1,0 +1,205 @@
+{
+  "project_path": "/home/vision2030/Desktop/gitignore-gen",
+  "analysis_date": 28924.799121138,
+  "technologies": {
+    "python": 1.0,
+    "node": 0.30000000000000004,
+    "go": 1.0,
+    "php": 1.0,
+    "csharp": 1.0,
+    "kotlin": 1.0,
+    "scala": 1.0,
+    "dart": 1.0,
+    "flutter": 1.0,
+    "svelte": 1.0,
+    "docker": 0.1,
+    "kubernetes": 0.30000000000000004,
+    "ansible": 0.30000000000000004,
+    "github": 1.0,
+    "vscode": 0.2
+  },
+  "dependencies": {
+    "python": {
+      "file": "pyproject.toml",
+      "path": "/home/vision2030/Desktop/gitignore-gen/pyproject.toml",
+      "size": 3243,
+      "modified": 1752067732.9810543
+    }
+  },
+  "structure": {
+    "type": "desktop",
+    "indicators": [
+      "desktop",
+      "library",
+      "cli",
+      "database",
+      "testing"
+    ],
+    "directories": [
+      ".github",
+      "gitignore_gen",
+      "demo-project",
+      "tests",
+      "gitignore_gen.egg-info",
+      "venv",
+      "examples",
+      "scripts"
+    ],
+    "depth": 11
+  },
+  "statistics": {
+    "total_files": 3040,
+    "total_dirs": 359,
+    "file_types": {
+      ".json": 7,
+      ".md": 3,
+      ".toml": 1,
+      ".yaml": 2,
+      ".py": 1337,
+      ".txt": 37,
+      ".backup": 1,
+      ".cfg": 1,
+      ".bash": 1,
+      ".sh": 1,
+      ".yml": 1,
+      ".pyc": 1334,
+      ".js": 3,
+      ".sample": 28,
+      ".12": 2,
+      ".fish": 1,
+      ".csh": 1,
+      ".ps1": 1,
+      ".pth": 1,
+      ".typed": 21,
+      ".so": 11,
+      ".pyi": 11,
+      ".pyx": 6,
+      ".markdown-it": 1,
+      ".pem": 2,
+      ".pxi": 1,
+      ".pxd": 4,
+      ".hash": 8
+    },
+    "largest_files": [
+      {
+        "path": "/home/vision2030/Desktop/gitignore-gen/venv/bin/python3.12",
+        "size": 8021824
+      },
+      {
+        "path": "/home/vision2030/Desktop/gitignore-gen/venv/bin/python3",
+        "size": 8021824
+      },
+      {
+        "path": "/home/vision2030/Desktop/gitignore-gen/venv/bin/python",
+        "size": 8021824
+      },
+      {
+        "path": "/home/vision2030/Desktop/gitignore-gen/venv/lib/python3.12/site-packages/aiohttp/_http_parser.cpython-312-x86_64-linux-gnu.so",
+        "size": 2878000
+      },
+      {
+        "path": "/home/vision2030/Desktop/gitignore-gen/venv/lib/python3.12/site-packages/yaml/_yaml.cpython-312-x86_64-linux-gnu.so",
+        "size": 2481784
+      },
+      {
+        "path": "/home/vision2030/Desktop/gitignore-gen/venv/lib/python3.12/site-packages/aiohttp/_websocket/reader_c.cpython-312-x86_64-linux-gnu.so",
+        "size": 1818512
+      },
+      {
+        "path": "/home/vision2030/Desktop/gitignore-gen/venv/lib/python3.12/site-packages/yarl/_quoting_c.cpython-312-x86_64-linux-gnu.so",
+        "size": 1092184
+      },
+      {
+        "path": "/home/vision2030/Desktop/gitignore-gen/venv/lib/python3.12/site-packages/multidict/_multidict.cpython-312-x86_64-linux-gnu.so",
+        "size": 848672
+      },
+      {
+        "path": "/home/vision2030/Desktop/gitignore-gen/venv/lib/python3.12/site-packages/frozenlist/_frozenlist.cpython-312-x86_64-linux-gnu.so",
+        "size": 789896
+      },
+      {
+        "path": "/home/vision2030/Desktop/gitignore-gen/venv/lib/python3.12/site-packages/propcache/_helpers_c.cpython-312-x86_64-linux-gnu.so",
+        "size": 770704
+      }
+    ],
+    "recent_files": [
+      {
+        "path": "/home/vision2030/Desktop/gitignore-gen/demo-project/.git/FETCH_HEAD",
+        "modified": 1752067791.9941611
+      },
+      {
+        "path": "/home/vision2030/Desktop/gitignore-gen/venv/lib/python3.12/site-packages/gitignore_gen-1.0.0.dist-info/RECORD",
+        "modified": 1752067740.4610667
+      },
+      {
+        "path": "/home/vision2030/Desktop/gitignore-gen/venv/lib/python3.12/site-packages/gitignore_gen-1.0.0.dist-info/REQUESTED",
+        "modified": 1752067740.4600666
+      },
+      {
+        "path": "/home/vision2030/Desktop/gitignore-gen/venv/lib/python3.12/site-packages/gitignore_gen-1.0.0.dist-info/direct_url.json",
+        "modified": 1752067740.4580667
+      },
+      {
+        "path": "/home/vision2030/Desktop/gitignore-gen/venv/bin/gitignore-gen",
+        "modified": 1752067740.4560666
+      },
+      {
+        "path": "/home/vision2030/Desktop/gitignore-gen/venv/lib/python3.12/site-packages/gitignore_gen-1.0.0.dist-info/INSTALLER",
+        "modified": 1752067740.4560666
+      },
+      {
+        "path": "/home/vision2030/Desktop/gitignore-gen/venv/lib/python3.12/site-packages/__pycache__/__editable___gitignore_gen_1_0_0_finder.cpython-312.pyc",
+        "modified": 1752067740.4560666
+      },
+      {
+        "path": "/home/vision2030/Desktop/gitignore-gen/venv/lib/python3.12/site-packages/gitignore_gen-1.0.0.dist-info/WHEEL",
+        "modified": 1752067740.4550667
+      },
+      {
+        "path": "/home/vision2030/Desktop/gitignore-gen/venv/lib/python3.12/site-packages/gitignore_gen-1.0.0.dist-info/entry_points.txt",
+        "modified": 1752067740.4550667
+      },
+      {
+        "path": "/home/vision2030/Desktop/gitignore-gen/venv/lib/python3.12/site-packages/gitignore_gen-1.0.0.dist-info/METADATA",
+        "modified": 1752067740.4550667
+      }
+    ]
+  },
+  "security": {
+    "sensitive_files": [
+      "/home/vision2030/Desktop/gitignore-gen/demo-project/.env",
+      "/home/vision2030/Desktop/gitignore-gen/demo-project/test-git-repo/.env",
+      "/home/vision2030/Desktop/gitignore-gen/venv/lib/python3.12/site-packages/certifi/cacert.pem",
+      "/home/vision2030/Desktop/gitignore-gen/venv/lib/python3.12/site-packages/pip/_vendor/certifi/cacert.pem",
+      "/home/vision2030/Desktop/gitignore-gen/venv/lib/python3.12/site-packages/markdown_it/token.py",
+      "/home/vision2030/Desktop/gitignore-gen/venv/lib/python3.12/site-packages/pygments/token.py",
+      "/home/vision2030/Desktop/gitignore-gen/venv/lib/python3.12/site-packages/yaml/tokens.py",
+      "/home/vision2030/Desktop/gitignore-gen/venv/lib/python3.12/site-packages/markdown_it/__pycache__/token.cpython-312.pyc",
+      "/home/vision2030/Desktop/gitignore-gen/venv/lib/python3.12/site-packages/pygments/__pycache__/token.cpython-312.pyc",
+      "/home/vision2030/Desktop/gitignore-gen/venv/lib/python3.12/site-packages/pip/_vendor/pygments/token.py",
+      "/home/vision2030/Desktop/gitignore-gen/venv/lib/python3.12/site-packages/pip/_vendor/pygments/__pycache__/token.cpython-312.pyc",
+      "/home/vision2030/Desktop/gitignore-gen/venv/lib/python3.12/site-packages/yaml/__pycache__/tokens.cpython-312.pyc"
+    ],
+    "exposed_secrets": [],
+    "weak_patterns": [],
+    "recommendations": [
+      "Consider using .npmrc for npm configuration",
+      "Ensure .env files are in .gitignore"
+    ]
+  },
+  "performance": {
+    "large_files": [],
+    "many_files": false,
+    "deep_nesting": true,
+    "recommendations": [
+      "Consider flattening directory structure"
+    ]
+  },
+  "recommendations": [
+    "Consider adding __pycache__/ and *.pyc to .gitignore",
+    "Ensure node_modules/ is in .gitignore",
+    "Consider using .npmrc for npm configuration",
+    "Ensure .env files are in .gitignore",
+    "Consider flattening directory structure"
+  ]
+}
