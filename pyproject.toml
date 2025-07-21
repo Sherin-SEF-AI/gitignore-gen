@@ -4,10 +4,10 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "gign"
-version = "1.0.2"
+version = "1.1.0"
 description = "A magical CLI tool that automatically generates and manages .gitignore files"
 readme = "README.md"
-license = {text = "MIT"}
+
 authors = [
     {name = "sherin joseph roy", email = "sherin.joseph2217@gmail.com"}
 ]
@@ -18,7 +18,6 @@ keywords = ["git", "gitignore", "cli", "developer-tools", "automation"]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.8",
@@ -43,6 +42,8 @@ dependencies = [
     "pathspec>=0.11.0",
     "typing-extensions>=4.5.0",
     "watchdog>=3.0.0",
+    "dataclasses-json>=0.6.0",
+    "python-dateutil>=2.8.0",
 ]
 
 [project.optional-dependencies]

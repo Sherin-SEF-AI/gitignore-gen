@@ -2,6 +2,8 @@
 
 import asyncio
 import sys
+import json
+from datetime import datetime
 from pathlib import Path
 from typing import Optional, List
 import threading
@@ -16,6 +18,9 @@ from rich.prompt import Confirm, Prompt
 from rich.table import Table
 
 from .core import GitignoreGenerator
+from .ai_recommendations import ai_engine, community_insights
+from .github_integration import github_integration, repository_sync
+from .template_manager import template_manager, template_marketplace, template_validator
 # Detector compatibility wrapper
 try:
     from .detector import TechnologyDetector as _RealDetector
@@ -511,6 +516,125 @@ def optimize(path: Optional[str], dry_run: bool, aggressive: bool) -> None:
     """Optimize existing .gitignore file for better performance."""
     optimize_path = Path(path) if path else Path.cwd()
     asyncio.run(optimize_gitignore(optimize_path, dry_run, aggressive))
+
+@cli.command()
+@click.option("--path", "-p", type=click.Path(exists=True), help="Path to analyze")
+@click.option("--output", "-o", type=click.Path(), help="Output file path")
+def ai_recommendations(path: Optional[str], output: Optional[str]) -> None:
+    """Get AI-powered recommendations for .gitignore optimization."""
+    analyze_path = Path(path) if path else Path.cwd()
+    asyncio.run(run_ai_recommendations(analyze_path, output))
+
+@cli.command()
+@click.option("--repo", "-r", required=True, help="GitHub repository URL")
+@click.option("--output", "-o", type=click.Path(), help="Output file path")
+def analyze_repo(repo: str, output: Optional[str]) -> None:
+    """Analyze a GitHub repository and extract .gitignore patterns."""
+    asyncio.run(run_analyze_repo(repo, output))
+
+@cli.command()
+@click.option("--repos", "-r", required=True, help="Comma-separated list of GitHub repository URLs")
+@click.option("--output", "-o", type=click.Path(), help="Output file path")
+def analyze_repos(repos: str, output: Optional[str]) -> None:
+    """Analyze multiple GitHub repositories and find common patterns."""
+    repo_urls = [url.strip() for url in repos.split(",")]
+    asyncio.run(run_analyze_repos(repo_urls, output))
+
+@cli.command()
+@click.option("--path", "-p", type=click.Path(exists=True), help="Local project path")
+@click.option("--repo", "-r", required=True, help="GitHub repository URL")
+@click.option("--message", "-m", help="Commit message")
+def sync_to_github(path: Optional[str], repo: str, message: Optional[str]) -> None:
+    """Sync local .gitignore to GitHub repository."""
+    local_path = Path(path) if path else Path.cwd()
+    asyncio.run(run_sync_to_github(local_path, repo, message))
+
+@cli.command()
+@click.option("--name", "-n", required=True, help="Template name")
+@click.option("--description", "-d", required=True, help="Template description")
+@click.option("--content", "-c", help="Template content")
+@click.option("--file", "-f", type=click.Path(exists=True), help="File containing template content")
+@click.option("--author", "-a", default="user", help="Template author")
+@click.option("--tags", "-t", help="Comma-separated tags")
+@click.option("--technologies", "-tech", help="Comma-separated technologies")
+def create_advanced_template(
+    name: str, 
+    description: str, 
+    content: Optional[str], 
+    file: Optional[str],
+    author: str,
+    tags: Optional[str],
+    technologies: Optional[str]
+) -> None:
+    """Create an advanced template with metadata."""
+    tag_list = [t.strip() for t in tags.split(",")] if tags else []
+    tech_list = [t.strip() for t in technologies.split(",")] if technologies else []
+    
+    if file:
+        with open(file, 'r') as f:
+            content = f.read()
+    elif not content:
+        raise click.UsageError("Either --content or --file must be provided")
+    
+    asyncio.run(run_create_advanced_template(name, description, content, author, tag_list, tech_list))
+
+@cli.command()
+@click.option("--search", "-s", help="Search query")
+@click.option("--tags", "-t", help="Comma-separated tags to filter by")
+@click.option("--technologies", "-tech", help="Comma-separated technologies to filter by")
+@click.option("--custom-only", is_flag=True, help="Show only custom templates")
+def list_advanced_templates(
+    search: Optional[str],
+    tags: Optional[str],
+    technologies: Optional[str],
+    custom_only: bool
+) -> None:
+    """List advanced templates with filtering options."""
+    tag_list = [t.strip() for t in tags.split(",")] if tags else None
+    tech_list = [t.strip() for t in technologies.split(",")] if technologies else None
+    
+    asyncio.run(run_list_advanced_templates(search, tag_list, tech_list, custom_only))
+
+@cli.command()
+@click.option("--name", "-n", required=True, help="Template name to export")
+@click.option("--output", "-o", type=click.Path(), help="Output file path")
+def export_template(name: str, output: Optional[str]) -> None:
+    """Export a template to a file."""
+    output_path = Path(output) if output else Path(f"{name}.json")
+    asyncio.run(run_export_template(name, output_path))
+
+@cli.command()
+@click.option("--file", "-f", type=click.Path(exists=True), required=True, help="Template file to import")
+def import_template(file: str) -> None:
+    """Import a template from a file."""
+    asyncio.run(run_import_template(Path(file)))
+
+@cli.command()
+@click.option("--category", "-c", help="Category to filter by")
+@click.option("--language", "-l", help="Language to filter by")
+@click.option("--trending", is_flag=True, help="Show trending templates")
+def marketplace(category: Optional[str], language: Optional[str], trending: bool) -> None:
+    """Discover templates from the marketplace."""
+    asyncio.run(run_marketplace(category, language, trending))
+
+@cli.command()
+@click.option("--name", "-n", required=True, help="Template name to download")
+def download_template(name: str) -> None:
+    """Download a template from the marketplace."""
+    asyncio.run(run_download_template(name))
+
+@cli.command()
+@click.option("--content", "-c", help="Content to validate")
+@click.option("--file", "-f", type=click.Path(exists=True), help="File to validate")
+def validate_template(content: Optional[str], file: Optional[str]) -> None:
+    """Validate template content and structure."""
+    if file:
+        with open(file, 'r') as f:
+            content = f.read()
+    elif not content:
+        raise click.UsageError("Either --content or --file must be provided")
+    
+    asyncio.run(run_validate_template(content))
 
 async def run_list_templates(search: Optional[str], custom_only: bool) -> None:
     """List available templates."""
@@ -1447,6 +1571,266 @@ async def optimize_gitignore(path: Path, dry_run: bool, aggressive: bool) -> Non
     except Exception as e:
         console.print(f"[red]❌ Optimization failed: {e}[/red]")
 
+
+async def run_ai_recommendations(path: Path, output: Optional[str]) -> None:
+    """Run AI-powered recommendations."""
+    console.print(f"🤖 Analyzing project for AI recommendations: {path}")
+    
+    try:
+        # Detect technologies
+        detector = TechnologyDetector()
+        technologies = await detector.detect(path)
+        
+        # Get existing .gitignore content
+        gitignore_file = path / ".gitignore"
+        existing_gitignore = None
+        if gitignore_file.exists():
+            existing_gitignore = gitignore_file.read_text()
+        
+        # Generate recommendations
+        recommendations = await ai_engine.analyze_project_and_recommend(
+            path, technologies, existing_gitignore
+        )
+        
+        # Display recommendations
+        ai_engine.display_recommendations(recommendations)
+        
+        # Save to file if requested
+        if output:
+            output_data = {
+                "project_path": str(path),
+                "detected_technologies": technologies,
+                "recommendations": [
+                    {
+                        "title": rec.title,
+                        "description": rec.description,
+                        "priority": rec.priority,
+                        "category": rec.category,
+                        "action": rec.action,
+                        "confidence": rec.confidence,
+                        "reasoning": rec.reasoning
+                    }
+                    for rec in recommendations
+                ],
+                "generated_at": datetime.now().isoformat()
+            }
+            
+            with open(output, 'w') as f:
+                json.dump(output_data, f, indent=2)
+            
+            console.print(f"✅ Recommendations saved to: {output}")
+    
+    except Exception as e:
+        console.print(f"[red]Error generating AI recommendations: {e}[/red]")
+
+async def run_analyze_repo(repo_url: str, output: Optional[str]) -> None:
+    """Analyze a GitHub repository."""
+    console.print(f"🔍 Analyzing GitHub repository: {repo_url}")
+    
+    try:
+        analysis = await github_integration.analyze_repository(repo_url)
+        
+        if analysis:
+            github_integration.display_repository_analysis(analysis)
+            
+            if output:
+                with open(output, 'w') as f:
+                    json.dump(analysis, f, indent=2, default=str)
+                console.print(f"✅ Analysis saved to: {output}")
+        else:
+            console.print("[red]Failed to analyze repository[/red]")
+    
+    except Exception as e:
+        console.print(f"[red]Error analyzing repository: {e}[/red]")
+
+async def run_analyze_repos(repo_urls: List[str], output: Optional[str]) -> None:
+    """Analyze multiple GitHub repositories."""
+    console.print(f"🔍 Analyzing {len(repo_urls)} GitHub repositories")
+    
+    try:
+        analysis = await github_integration.analyze_multiple_repositories(repo_urls)
+        
+        if analysis:
+            # Display common patterns
+            github_integration.display_common_patterns(analysis["common_patterns"])
+            
+            # Display recommendations
+            if analysis["recommendations"]:
+                console.print("\n[bold]📊 Analysis Summary:[/bold]")
+                for rec in analysis["recommendations"]:
+                    if rec["type"] == "missing_gitignore":
+                        console.print(f"❌ {rec['count']} repositories missing .gitignore files ({rec['percentage']:.1f}%)")
+                    elif rec["type"] == "top_languages":
+                        console.print(f"🔤 Top languages: {', '.join([lang for lang, _ in rec['languages'][:3]])}")
+            
+            if output:
+                with open(output, 'w') as f:
+                    json.dump(analysis, f, indent=2, default=str)
+                console.print(f"✅ Analysis saved to: {output}")
+        else:
+            console.print("[red]Failed to analyze repositories[/red]")
+    
+    except Exception as e:
+        console.print(f"[red]Error analyzing repositories: {e}[/red]")
+
+async def run_sync_to_github(local_path: Path, repo_url: str, message: Optional[str]) -> None:
+    """Sync local .gitignore to GitHub."""
+    console.print(f"🔄 Syncing .gitignore to GitHub: {repo_url}")
+    
+    try:
+        commit_message = message or "Update .gitignore via gign"
+        success = await repository_sync.sync_to_github(local_path, repo_url, commit_message)
+        
+        if success:
+            console.print("✅ Sync completed successfully")
+        else:
+            console.print("[red]Sync failed[/red]")
+    
+    except Exception as e:
+        console.print(f"[red]Error syncing to GitHub: {e}[/red]")
+
+async def run_create_advanced_template(
+    name: str, 
+    description: str, 
+    content: str, 
+    author: str, 
+    tags: List[str], 
+    technologies: List[str]
+) -> None:
+    """Create an advanced template."""
+    try:
+        # Validate template
+        is_valid, errors = template_validator.validate_template_content(content)
+        if not is_valid:
+            console.print("[red]Template validation failed:[/red]")
+            for error in errors:
+                console.print(f"  ❌ {error}")
+            return
+        
+        is_valid, errors = template_validator.validate_template_name(name)
+        if not is_valid:
+            console.print("[red]Template name validation failed:[/red]")
+            for error in errors:
+                console.print(f"  ❌ {error}")
+            return
+        
+        # Create template
+        template = await template_manager.create_template(
+            name, description, content, author, tags, technologies
+        )
+        
+        console.print(f"✅ Advanced template '{name}' created successfully!")
+        console.print(f"📝 Description: {template.description}")
+        console.print(f"🏷️ Tags: {', '.join(template.tags)}")
+        console.print(f"🔧 Technologies: {', '.join(template.technologies)}")
+    
+    except Exception as e:
+        console.print(f"[red]Error creating template: {e}[/red]")
+
+async def run_list_advanced_templates(
+    search: Optional[str],
+    tags: Optional[List[str]],
+    technologies: Optional[List[str]],
+    custom_only: bool
+) -> None:
+    """List advanced templates."""
+    try:
+        templates = await template_manager.list_templates(
+            search=search,
+            tags=tags,
+            technologies=technologies,
+            custom_only=custom_only
+        )
+        
+        template_manager.display_templates(templates)
+    
+    except Exception as e:
+        console.print(f"[red]Error listing templates: {e}[/red]")
+
+async def run_export_template(name: str, output_path: Path) -> None:
+    """Export a template."""
+    try:
+        success = await template_manager.export_template(name, output_path)
+        if not success:
+            console.print(f"[red]Failed to export template '{name}'[/red]")
+    
+    except Exception as e:
+        console.print(f"[red]Error exporting template: {e}[/red]")
+
+async def run_import_template(import_path: Path) -> None:
+    """Import a template."""
+    try:
+        success = await template_manager.import_template(import_path)
+        if not success:
+            console.print(f"[red]Failed to import template from '{import_path}'[/red]")
+    
+    except Exception as e:
+        console.print(f"[red]Error importing template: {e}[/red]")
+
+async def run_marketplace(category: Optional[str], language: Optional[str], trending: bool) -> None:
+    """Discover templates from marketplace."""
+    try:
+        templates = await template_marketplace.discover_templates(
+            category=category,
+            language=language,
+            trending=trending
+        )
+        
+        template_marketplace.display_marketplace(templates)
+    
+    except Exception as e:
+        console.print(f"[red]Error accessing marketplace: {e}[/red]")
+
+async def run_download_template(name: str) -> None:
+    """Download a template from marketplace."""
+    try:
+        template = await template_marketplace.download_template(name)
+        
+        if template:
+            # Add to local templates
+            await template_manager.create_template(
+                template.name,
+                template.description,
+                template.content,
+                template.author,
+                template.tags,
+                template.technologies
+            )
+            console.print(f"✅ Template '{name}' downloaded and added to local templates")
+        else:
+            console.print(f"[red]Failed to download template '{name}'[/red]")
+    
+    except Exception as e:
+        console.print(f"[red]Error downloading template: {e}[/red]")
+
+async def run_validate_template(content: str) -> None:
+    """Validate template content."""
+    try:
+        # Validate content
+        is_valid, errors = template_validator.validate_template_content(content)
+        
+        if is_valid:
+            console.print("✅ Template content is valid!")
+        else:
+            console.print("[red]❌ Template content validation failed:[/red]")
+            for error in errors:
+                console.print(f"  ❌ {error}")
+        
+        # Show statistics
+        lines = content.split('\n')
+        non_empty_lines = [line for line in lines if line.strip()]
+        comment_lines = [line for line in lines if line.strip().startswith('#')]
+        pattern_lines = [line for line in lines if line.strip() and not line.strip().startswith('#')]
+        
+        console.print(f"\n📊 Template Statistics:")
+        console.print(f"  Total lines: {len(lines)}")
+        console.print(f"  Non-empty lines: {len(non_empty_lines)}")
+        console.print(f"  Comment lines: {len(comment_lines)}")
+        console.print(f"  Pattern lines: {len(pattern_lines)}")
+        console.print(f"  File size: {len(content.encode())} bytes")
+    
+    except Exception as e:
+        console.print(f"[red]Error validating template: {e}[/red]")
 
 if __name__ == "__main__":
     main() 
